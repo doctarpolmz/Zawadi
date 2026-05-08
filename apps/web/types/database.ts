@@ -27,12 +27,12 @@ export interface ContentRequest {
   title: string
   type: 'movie' | 'music' | 'book'
   description: string | null
-  category: string | null
+  reason: string | null
   status: RequestStatus
   admin_reply: string | null
+  replied_at: string | null
   upvotes: number
   created_at: string
-  updated_at: string
   users?: { full_name: string | null; avatar_url: string | null; email?: string }
 }
 
