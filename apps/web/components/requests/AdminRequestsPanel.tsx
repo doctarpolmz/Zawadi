@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react'
-import { MessageSquare, Check, X, Loader, ChevronDown, ChevronUp, TrendingUp, Sparkles, AlertCircle } from 'lucide-react'
+import { MessageSquare, Check, Loader, ChevronDown, ChevronUp, TrendingUp, Sparkles, AlertCircle } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { formatDate, cn } from '@/lib/utils'
 import type { ContentRequest } from '@/types/database'

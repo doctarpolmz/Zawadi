@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { ThumbsUp, Send, ChevronDown, ChevronUp, Clock, CheckCircle, XCircle, Loader, MessageSquare, Search, Sparkles, TrendingUp } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { useAuthStore } from '@/lib/stores/useAuthStore'
-import { formatDate, cn, getInitials } from '@/lib/utils'
+import { formatDate, cn } from '@/lib/utils'
 import type { ContentRequest } from '@/types/database'
 
 type RequestStatus = 'pending' | 'reviewing' | 'approved' | 'rejected' | 'fulfilled'
