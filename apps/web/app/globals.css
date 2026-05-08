@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 4%;
+    --foreground: 0 0% 95%;
+    --card: 240 8% 7%;
+    --card-foreground: 0 0% 95%;
+    --popover: 240 8% 7%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 160 100% 39%;
+    --primary-foreground: 240 10% 4%;
+    --secondary: 240 6% 13%;
+    --secondary-foreground: 0 0% 85%;
+    --muted: 240 6% 13%;
+    --muted-foreground: 240 5% 55%;
+    --accent: 38 91% 55%;
+    --accent-foreground: 240 10% 4%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 6% 15%;
+    --input: 240 6% 15%;
+    --ring: 160 100% 39%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  body {
+    @apply bg-zawadi-dark text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { @apply bg-zawadi-surface; }
+  ::-webkit-scrollbar-thumb { @apply bg-zawadi-surface2 rounded-full; }
+}
+
+@layer utilities {
+  .skeleton {
+    background: linear-gradient(90deg, #1A1A24 25%, #222230 50%, #1A1A24 75%);
+    background-size: 200% 100%;
+    @apply animate-shimmer rounded-lg;
+  }
+
+  .content-card-hover {
+    @apply transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-zawadi-green/10;
+  }
+
+  .glass {
+    @apply bg-zawadi-surface/80 backdrop-blur-md border border-white/5;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-zawadi-green to-zawadi-gold bg-clip-text text-transparent;
+  }
+
+  .hero-gradient {
+    background: linear-gradient(to right, #0A0A0F 40%, transparent);
+  }
+
+  .bottom-fade {
+    background: linear-gradient(to top, #0A0A0F 0%, transparent 100%);
+  }
+}
