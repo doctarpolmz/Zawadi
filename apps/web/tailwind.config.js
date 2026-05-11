@@ -10,6 +10,9 @@ module.exports = {
   theme: {
     container: { center: true, padding: '2rem', screens: { '2xl': '1400px' } },
     extend: {
+      fontFamily: {
+        sans: ['var(--font-inter)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
@@ -25,10 +28,17 @@ module.exports = {
         zawadi: {
           green: '#00C896',
           gold: '#F5A623',
-          dark: '#0A0A0F',
-          surface: '#111118',
-          surface2: '#1A1A24',
+          dark: '#05050B',
+          surface: '#0d0d14',
+          surface2: '#161622',
+          mist: '#0b0b11',
         },
+      },
+      boxShadow: {
+        glow: '0 24px 80px rgba(0, 200, 150, 0.14)',
+      },
+      backgroundImage: {
+        'hero-glow': 'radial-gradient(circle at top left, rgba(0,200,150,.22), transparent 18%), radial-gradient(circle at 80% 10%, rgba(245,166,35,.16), transparent 16%)',
       },
       borderRadius: { lg: 'var(--radius)', md: 'calc(var(--radius) - 2px)', sm: 'calc(var(--radius) - 4px)' },
       keyframes: {

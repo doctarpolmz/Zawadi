@@ -45,7 +45,7 @@ export function AudioPlayerBar() {
   if (!currentContent || currentContent.type !== 'music') return null
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 glass border-t border-white/5">
+    <div className="fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-black/20 backdrop-blur-3xl shadow-[0_24px_80px_-40px_rgba(0,0,0,0.8)]">
       {/* Hidden audio element */}
       <audio
         ref={audioRef}
@@ -65,18 +65,16 @@ export function AudioPlayerBar() {
         onClick={seek}
       >
         <div
-          className="h-full bg-zawadi-green transition-all relative"
+          className="h-full bg-gradient-to-r from-zawadi-green to-zawadi-gold transition-all relative"
           style={{ width: `${duration ? (current / duration) * 100 : 0}%` }}
         >
           <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-white opacity-0 group-hover:opacity-100 transition-opacity" />
         </div>
       </div>
 
-      {/* Controls */}
-      <div className="max-w-screen-2xl mx-auto px-4 md:px-8 h-16 flex items-center gap-4">
-        {/* Content info */}
-        <div className="flex items-center gap-3 flex-1 min-w-0">
-          <div className="relative w-10 h-10 rounded-lg overflow-hidden shrink-0">
+      <div className="max-w-screen-2xl mx-auto px-4 md:px-8 h-20 flex items-center gap-4">
+        <div className="flex items-center gap-4 flex-1 min-w-0">
+          <div className="relative w-12 h-12 rounded-2xl overflow-hidden shrink-0 border border-white/10">
             <Image
               src={getThumbnail(currentContent, 80)}
               alt={currentContent.title}
@@ -85,38 +83,35 @@ export function AudioPlayerBar() {
             />
           </div>
           <div className="min-w-0">
-            <p className="text-sm font-medium text-white truncate">{currentContent.title}</p>
+            <p className="text-sm font-semibold text-white truncate">{currentContent.title}</p>
             <p className="text-xs text-zinc-500 truncate">{currentContent.categories?.name ?? 'Music'}</p>
           </div>
         </div>
 
-        {/* Controls */}
         <div className="flex items-center gap-2">
-          <button className="p-2 text-zinc-400 hover:text-white transition-colors hidden sm:flex">
+          <button className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white/5 text-zinc-400 hover:text-white hover:bg-white/10 transition-colors hidden sm:flex">
             <SkipBack className="w-4 h-4" />
           </button>
           <button
             onClick={() => setPlaying(!isPlaying)}
-            className="w-10 h-10 rounded-full bg-zawadi-green flex items-center justify-center hover:bg-zawadi-green/90 transition-colors"
+            className="inline-flex h-12 w-12 items-center justify-center rounded-3xl bg-zawadi-green hover:bg-zawadi-green/90 transition-colors shadow-lg shadow-zawadi-green/20"
           >
             {isPlaying
-              ? <Pause className="w-4 h-4 text-zawadi-dark fill-current" />
-              : <Play className="w-4 h-4 text-zawadi-dark fill-current ml-0.5" />
+              ? <Pause className="w-5 h-5 text-zawadi-dark" />
+              : <Play className="w-5 h-5 text-zawadi-dark ml-0.5" />
             }
           </button>
-          <button className="p-2 text-zinc-400 hover:text-white transition-colors hidden sm:flex">
+          <button className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white/5 text-zinc-400 hover:text-white hover:bg-white/10 transition-colors hidden sm:flex">
             <SkipForward className="w-4 h-4" />
           </button>
         </div>
 
-        {/* Time */}
         <div className="text-xs text-zinc-500 hidden sm:block tabular-nums">
           {formatDuration(current)} / {formatDuration(duration)}
         </div>
 
-        {/* Volume */}
-        <div className="hidden md:flex items-center gap-2">
-          <button onClick={() => setMuted(!muted)} className="p-1 text-zinc-400 hover:text-white transition-colors">
+        <div className="hidden md:flex items-center gap-3">
+          <button onClick={() => setMuted(!muted)} className="inline-flex h-8 w-8 items-center justify-center rounded-2xl bg-white/5 text-zinc-400 hover:text-white hover:bg-white/10 transition-colors">
             {muted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
           </button>
           <input
@@ -127,10 +122,9 @@ export function AudioPlayerBar() {
           />
         </div>
 
-        {/* Close */}
         <button
           onClick={() => setCurrentContent(null)}
-          className="p-2 text-zinc-600 hover:text-white transition-colors"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white/5 text-zinc-400 hover:text-white hover:bg-white/10 transition-colors"
         >
           <X className="w-4 h-4" />
         </button>

@@ -152,7 +152,25 @@ zawadi/
 
 ## 🌍 Deployment
 
-### Frontend → Vercel
+### Frontend → Netlify (Recommended)
+
+1. **Connect Repository**
+   - Go to [netlify.com](https://netlify.com) → New site from Git
+   - Connect your GitHub repository
+   - Set build settings:
+     - **Build command**: `cd apps/web && npm run build`
+     - **Publish directory**: `apps/web/.next`
+
+2. **Environment Variables**
+   - Go to Site Settings → Environment Variables
+   - Copy values from `.env.netlify` file
+   - Required: Supabase URL/keys, Stripe keys, Flutterwave keys
+
+3. **Deploy**
+   - Push to main branch to trigger automatic deployment
+   - Your site will be live at `https://your-site.netlify.app`
+
+### Alternative: Frontend → Vercel
 
 ```bash
 # Install Vercel CLI

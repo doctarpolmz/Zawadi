@@ -46,21 +46,29 @@ export default async function HomePage() {
   ])
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-16">
       <HeroSection content={featured} />
 
-      <div className="px-4 md:px-8 space-y-10 max-w-screen-2xl mx-auto">
+      <div className="px-4 md:px-8 space-y-16 max-w-screen-2xl mx-auto">
         {movies && movies.length > 0 && (
-          <ContentRow title="🎬 Latest Movies" items={movies} viewAllHref="/browse/movies" />
+          <section className="section-surface p-8 md:p-12">
+            <ContentRow title="🎬 Latest Movies" items={movies} viewAllHref="/browse/movies" />
+          </section>
         )}
         {music && music.length > 0 && (
-          <ContentRow title="🎵 Fresh Music" items={music} viewAllHref="/browse/music" />
+          <section className="section-surface p-8 md:p-12">
+            <ContentRow title="🎵 Fresh Music" items={music} viewAllHref="/browse/music" />
+          </section>
         )}
         {books && books.length > 0 && (
-          <ContentRow title="📚 New Books" items={books} viewAllHref="/browse/books" />
+          <section className="section-surface p-8 md:p-12">
+            <ContentRow title="📚 New Books" items={books} viewAllHref="/browse/books" />
+          </section>
         )}
         {free && free.length > 0 && (
-          <ContentRow title="✨ Free to Watch" items={free} viewAllHref="/browse/movies" />
+          <section className="section-surface p-8 md:p-12">
+            <ContentRow title="✨ Free to Watch" items={free} viewAllHref="/browse/movies" />
+          </section>
         )}
       </div>
     </div>
