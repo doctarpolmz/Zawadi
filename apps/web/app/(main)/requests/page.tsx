@@ -1,24 +1,43 @@
 import { createServerSupabaseClient } from '@/lib/supabase/server'
-import { MessageSquare, TrendingUp, Clock, CheckCircle } from 'lucide-react'
+import { MessageSquare, TrendingUp, Clock, CheckCircle, AlertCircle } from 'lucide-react'
 import { ContentRequestsClient } from '@/components/requests/ContentRequests'
+import type { ContentRequest } from '@/types/database'
 
 export const dynamic = 'force-dynamic'
+
+function RequestsError() {
+  return (
+    <div className="px-4 md:px-8 max-w-screen-xl mx-auto py-12">
+      <div className="rounded-xl border border-red-500/20 bg-red-500/5 p-8 text-center">
+        <AlertCircle className="w-12 h-12 text-red-400 mx-auto mb-3" />
+        <h2 className="text-lg font-semibold text-white mb-2">Unable to Load Requests</h2>
+        <p className="text-zinc-400">Please try again later</p>
+      </div>
+    </div>
+  )
+}
 
 export default async function RequestsPage() {
   const supabase = createServerSupabaseClient()
 
-  const requests = ((await supabase
+  const { data: requests, error } = await supabase
     .from('content_requests')
     .select('*, users(full_name, avatar_url)')
     .order('upvotes', { ascending: false })
     .order('created_at', { ascending: false })
-    .limit(50)) as any).data as any[]
+    .limit(50)
+
+  if (error) {
+    console.error('Failed to fetch content requests:', error)
+    return <RequestsError />
+  }
+
+  const requestsData = (requests ?? []) as ContentRequest[]
 
   // Stats
-  const total = requests.length
-  const fulfilled = requests?.filter(r => r.status === 'fulfilled').length ?? 0
-  const pending = requests?.filter(r => r.status === 'pending').length ?? 0
-  const topRequest = requests?.[0]
+  const total = requestsData.length
+  const fulfilled = requestsData.filter(r => r.status === 'fulfilled').length
+  const pending = requestsData.filter(r => r.status === 'pending').length
 
   return (
     <div className="px-4 md:px-8 max-w-screen-xl mx-auto space-y-8">
@@ -79,7 +98,7 @@ export default async function RequestsPage() {
       </div>
 
       {/* Client-side interactive list */}
-      <ContentRequestsClient initialRequests={(requests ?? []) as any} />
+      <ContentRequestsClient initialRequests={requestsData} />
     </div>
   )
 }
