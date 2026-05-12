@@ -1,6 +1,3 @@
-
-# Zawadi
-=======
 # Zawadi 🎬🎵📚
 
 > **Africa's Stories, On Africa's Terms.**

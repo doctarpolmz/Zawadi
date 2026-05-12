@@ -20,6 +20,16 @@ const nextConfig = {
       },
     ]
   },
+  // Configure for Netlify deployment
+  experimental: {
+    serverComponentsExternalPackages: ['@supabase/supabase-js'],
+  },
+  // Disable static generation for dynamic pages
+  staticPageGenerationTimeout: 120,
+  onDemandEntries: {
+    maxInactiveAge: 60 * 1000,
+    pagesBufferLength: 5,
+  },
 }
 
 module.exports = nextConfig

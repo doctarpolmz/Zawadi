@@ -10,4 +10,3 @@
   from = "/*"
   to = "/index.html"
   status = 200
->>>>>>> c19e2d1 (feat: premium UI redesign and Netlify deployment setup)
