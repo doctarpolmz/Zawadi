@@ -1,0 +1,27 @@
+{
+  "buildCommand": "cd apps/web && npm install && npm run build",
+  "installCommand": "npm install",
+  "outputDirectory": "apps/web/.next",
+  "public": false,
+  "git": {
+    "silent": true
+  },
+  "env": {
+    "NEXT_PUBLIC_SUPABASE_URL": "@next_public_supabase_url",
+    "NEXT_PUBLIC_SUPABASE_ANON_KEY": "@next_public_supabase_anon_key",
+    "SUPABASE_SERVICE_ROLE_KEY": "@supabase_service_role_key",
+    "NEXT_PUBLIC_SITE_URL": "@next_public_site_url",
+    "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY": "@next_public_stripe_publishable_key",
+    "STRIPE_SECRET_KEY": "@stripe_secret_key",
+    "STRIPE_WEBHOOK_SECRET": "@stripe_webhook_secret",
+    "STRIPE_BASIC_PRICE_ID": "@stripe_basic_price_id",
+    "STRIPE_PREMIUM_PRICE_ID": "@stripe_premium_price_id",
+    "FLW_PUBLIC_KEY": "@flw_public_key",
+    "FLW_SECRET_KEY": "@flw_secret_key",
+    "FLW_SECRET_HASH": "@flw_secret_hash",
+    "MUX_TOKEN_ID": "@mux_token_id",
+    "MUX_TOKEN_SECRET": "@mux_token_secret",
+    "NEXT_PUBLIC_MUX_DATA_KEY": "@next_public_mux_data_key"
+  },
+  "regions": ["iad1"]
+}
